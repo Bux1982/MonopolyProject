@@ -23,6 +23,7 @@ public class Einlesen {
 		return new BufferedReader(new FileReader("j:\\Strassen.csv"));
 	}
 
+	//test change
 //	private static void putDataInDaGame(String filePath) throws IOException {
 //
 ////        try
