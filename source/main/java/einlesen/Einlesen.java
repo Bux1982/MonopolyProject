@@ -105,14 +105,14 @@ public class Einlesen {
     	int rent_multi = Integer.valueOf(st.nextToken());//3 Häuser;
     	int hypothek = Integer.valueOf(st.nextToken());//Hypothek;
     	int position = Integer.valueOf(st.nextToken());//Position
-    	//TODO Gruppe
-      	Bahnhof bahnhof = new Bahnhof(
-      		fieldname,
-      		position,
-      		price_street,
-      		rent_single,
-      		hypothek
-      	);
+//    	//TODO Gruppe
+//      	Bahnhof bahnhof = new Bahnhof(
+//      		fieldname,
+//      		position,
+//      		price_street,
+//      		rent_single,
+//      		hypothek
+//      	);
 	}
 	
 	public static void fillStation(String filePath) throws IOException
