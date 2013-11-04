@@ -20,7 +20,7 @@ public class Spieler {
 	 * Erstellt einen neuen Spieler
 	 * @param figur Figur des Spielers
 	 */
-	private Spieler(Figur figur, int geld){
+	public Spieler(Figur figur, int geld){
 		this.figur = figur;
 		this.geld = geld;
 	}

@@ -21,9 +21,9 @@ public interface Operationen {
 
 	public boolean kaufeHotel(Spieler spieler, Grundstueck grundstueck);
 
-	public void verkaufeGebauede(Spieler spieler, Grundstueck grundstueck);
+	public void verkaufeGebauede(Grundstueck grundstueck, int gebaudeanzahl);
 
-	public void verkaufeGrundstueck(Spieler spieler, Grundstueck grundstueck);
+	public boolean verkaufeGrundstueck(Spieler spieler, Grundstueck grundstueck);
 
 	public int wuerfelWerfen();
 }

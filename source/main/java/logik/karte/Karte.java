@@ -1,5 +1,6 @@
 package logik.karte;
 
+
 /**
  * Stellt eine Karte dar
  * @author Sven
@@ -27,5 +28,5 @@ public abstract class Karte {
 	 */
 	public String getText(){
 		return text;
-	};
+	}
 }
