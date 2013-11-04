@@ -10,25 +10,14 @@ public class Strasse extends Grundstueck{
 	private final int[] mieteprohaus;
 	private final int hotelmiete;
 	
-	public Strasse(
-			String name,
-			int spielfeldposition,
-			int preis,
-			int grundmiete,
-			int hypothekswert,
-			int[] gruppe,
-			String farbe,
-			int hauspreis,
-			int hotelpreis,
-			int[] mieteprohaus,
-			int hotelmiete
-		) {
-
+	public Strasse(String name, int spielfeldposition, int preis,
+			int grundmiete, int hypothekswert, int[] gruppe, String farbe,
+			int hauspreis, int hotelpreis, int[] mieteprohaus, int hotelmiete) {
 		super(name, spielfeldposition, preis, grundmiete, hypothekswert, gruppe);
 
-		if (mieteprohaus.length != 4)
+		if (mieteprohaus.length != 4){
 			throw new IndexOutOfBoundsException("MieteProHaus-Array <> Länge 4");
-		
+		}		
 		
 		this.hauspreis = hauspreis;
 		this.hotelpreis = hotelpreis;
