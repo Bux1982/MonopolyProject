@@ -21,6 +21,18 @@ public class Spielfeld extends Frame implements MouseListener
 	//String bilderPfad = "J:/Monopoli/Monopolybilder/";
 	String bilderPfad = "C:/Eigene Dateien/Java/Schule/MonopolyWorkspace/Monopolybilder/";
 	
+	Image los = Toolkit.getDefaultToolkit().getImage(bilderPfad + "Los.bmp");
+	Image freiParken = Toolkit.getDefaultToolkit().getImage(bilderPfad + "FreiParken.bmp");
+	Image fragezeichen = Toolkit.getDefaultToolkit().getImage(bilderPfad + "Fragezeichen.bmp");
+	Image gemeinschaftsfeld = Toolkit.getDefaultToolkit().getImage(bilderPfad + "Gemeinschaftsfeld.png");
+	Image lock = Toolkit.getDefaultToolkit().getImage(bilderPfad + "Lock_HatNickSchoenGemacht.bmp");
+	Image monopolyLogo = Toolkit.getDefaultToolkit().getImage(bilderPfad + "MonopolyLogo.svg.png");
+	Image polizist = Toolkit.getDefaultToolkit().getImage(bilderPfad + "Polizist.bmp");
+	Image ring = Toolkit.getDefaultToolkit().getImage(bilderPfad + "Ring.bmp");
+	Image knast = Toolkit.getDefaultToolkit().getImage(bilderPfad + "knast.jpg");
+	Image birne = Toolkit.getDefaultToolkit().getImage(bilderPfad + "Birne.jpg");
+	Image wasserhahn = Toolkit.getDefaultToolkit().getImage(bilderPfad + "wasserhahn.png");
+	/*
 	Image los = Toolkit.getDefaultToolkit().getImage(bilderPfad + "Los.gif");
 	Image freiParken = Toolkit.getDefaultToolkit().getImage(bilderPfad + "FreiParken.gif");
 	Image fragezeichen = Toolkit.getDefaultToolkit().getImage(bilderPfad + "Fragezeichen.gif");
@@ -32,6 +44,7 @@ public class Spielfeld extends Frame implements MouseListener
 	Image knast = Toolkit.getDefaultToolkit().getImage(bilderPfad + "knast.gif");
 	Image birne = Toolkit.getDefaultToolkit().getImage(bilderPfad + "Birne.gif");
 	Image wasserhahn = Toolkit.getDefaultToolkit().getImage(bilderPfad + "wasserhahn.gif");
+	*/
 	ImageObserver observer;
 	
 	
@@ -42,8 +55,8 @@ public class Spielfeld extends Frame implements MouseListener
 	private int anz_spieler = 6;	//Index 6 ist reserviert für Blinken
 	private int anz_frames = 6;
 	private int figur_streckfaktor = 8;
-	//String imgPath = "K:/Monopoly - Sven/FigurenGrid.PNG";
-	String imgPath = "C:/Sonstiges/FigurenGrid.gif";
+	String imgPath = "K:/Monopoly - Sven/FigurenGrid.PNG";
+	//String imgPath = "C:/Sonstiges/FigurenGrid.gif";
 	private ImageIcon[][] figurFrames = new ImageIcon[anz_spieler][anz_frames];
 	
 	
@@ -1372,7 +1385,94 @@ public class Spielfeld extends Frame implements MouseListener
 		
 		
 		//Graphics g, spieler, x1, y1, x2, y2, ppf
-		figurBewegen(g, 0, 300, 300, 100, 300, 5);
+		//figurBewegen(g, 0, 300, 300, 100, 300, 5);
+		
+		
+		int spieler = 1;
+		int x1 = 300;
+		int y1 = 300;
+		int x2 = 100;
+		int y2 = 300;
+		int ppf = 5;
+		int pixelGesamt = 0;
+		int pixelDiesesFrames = 0;
+		int aktFrame = 0;
+		
+		if(x1 == x2)
+		{
+			pixelGesamt = Math.abs(y1-y2);
+		}
+		else
+		{
+			pixelGesamt = Math.abs(x1-x2);
+		}
+		
+		for(int i = 0; i < pixelGesamt; i++)
+		{
+			if(x1 < x2)	//Figur geht nach rechts
+			{
+				if(y1 < y2)	//Figur geht nach unten
+				{
+					figurFrames[spieler][aktFrame].paintIcon(this, g, x1+i, y1+i);
+					pixelDiesesFrames++;
+				}
+				else if(y1 > y2)	//Figur geht nach oben
+				{
+					figurFrames[spieler][aktFrame].paintIcon(this, g, x1+i, y1-i);
+					pixelDiesesFrames++;
+				}
+				else	//Y bleibt
+				{
+					figurFrames[spieler][aktFrame].paintIcon(this, g, x1+i, y1);
+					pixelDiesesFrames++;
+				}
+			}
+			else if(x1 > x2)	//Figur geht nach links
+			{
+				if(y1 < y2)	//Figur geht nach unten
+				{
+					figurFrames[spieler][aktFrame].paintIcon(this, g, x1-i, y1+i);
+					pixelDiesesFrames++;
+				}
+				else if(y1 > y2)	//Figur geht nach oben
+				{
+					figurFrames[spieler][aktFrame].paintIcon(this, g, x1-i, y1-i);
+					pixelDiesesFrames++;
+				}
+				else	//Y bleibt
+				{
+					figurFrames[spieler][aktFrame].paintIcon(this, g, x1-i, y1);
+					pixelDiesesFrames++;
+				}
+			}
+			else	//X bleibt
+			{
+				if(y1 < y2)	//Figur geht nach unten
+				{
+					figurFrames[spieler][aktFrame].paintIcon(this, g, x1, y1+i);
+					pixelDiesesFrames++;
+				}
+				else if(y1 > y2)	//Figur geht nach oben
+				{
+					figurFrames[spieler][aktFrame].paintIcon(this, g, x1, y1-i);
+					pixelDiesesFrames++;
+				}
+			}
+			
+			if(pixelDiesesFrames == ppf)
+			{
+				pixelDiesesFrames = 0;
+				aktFrame++;
+				
+				if(aktFrame == anz_frames)
+				{
+					aktFrame = 0;
+				}
+			}
+			
+			repaint();
+			try{Thread.sleep(   50   );}catch (InterruptedException e){e.printStackTrace();}
+		}
 	}
 	
 	
