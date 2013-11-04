@@ -18,7 +18,8 @@ public class Spieler {
 	
 	/**
 	 * Erstellt einen neuen Spieler
-	 * @param figur Figur des Spielers
+	 * @param figur die {@link Figur}
+	 * @param geld das Startkapital
 	 */
 	public Spieler(Figur figur, int geld){
 		this.figur = figur;

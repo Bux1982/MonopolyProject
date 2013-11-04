@@ -1,24 +1,23 @@
 package logik.spielfeld;
 
-
+/**
+ * Darstellung des Spielfelds Los
+ * @author Alina
+ *
+ */
 public class Los extends Spielfeld{
 
 	private final int geldwert; 
 	
 	/**
-	 * Standard-Konstruktor
+	 * Erstellt ein neues Los-Spielfeld
+	 * @param geldwert der Geldwert der beim überschreiten von Los ausgezahlt wird
 	 */
-	private Los(String name, int position, int geldwert){
-		super(name, position);
+	public Los(int geldwert){
+		super("Los", 0);
 		this.geldwert = geldwert;
 	}
 
-	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	public int getGeldwert() {
 		return geldwert;
 	}

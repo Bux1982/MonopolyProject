@@ -1,5 +1,10 @@
 package logik.spielfeld;
 
+/**
+ * Darstellung einer Strasse auf dem Spielfeld
+ * 
+ * @author Sven
+ */
 public class Strasse extends Grundstueck{
 	
 	private int haeuser;
@@ -10,6 +15,20 @@ public class Strasse extends Grundstueck{
 	private final int[] mieteprohaus;
 	private final int hotelmiete;
 	
+	/**
+	 * Erstellt eine neue Straße 
+	 * @param name name des Spielfelds
+	 * @param spielfeldposition Position auf dem Spielplan
+	 * @param preis Preis für den Kauf des Grundstücks
+	 * @param grundmiete Grundmiete für das Grundstück
+	 * @param hypothekswert Wert für die Hypothek
+	 * @param gruppe Spielfeldposition der anderen Grundstücke der Gruppe
+	 * @param farbe die Farbe der Gruppe
+	 * @param hauspreis der Preis für den Kauf eines einzelnen Hauses
+	 * @param hotelpreis der Preis für den Kauf eines Hotels
+	 * @param mieteprohaus die Miete pro Haus
+	 * @param hotelmiete die Miete für das Hotel
+	 */
 	public Strasse(String name, int spielfeldposition, int preis,
 			int grundmiete, int hypothekswert, int[] gruppe, String farbe,
 			int hauspreis, int hotelpreis, int[] mieteprohaus, int hotelmiete) {

@@ -1,7 +1,6 @@
 package logik;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -43,20 +42,37 @@ public class OperationenImpl implements Operationen {
 
 	@Override
 	public void aufnehmenHypothek(Spieler spieler, Grundstueck grundstueck) {
-		// TODO Auto-generated method stub
-
+		changeHypothek(spieler, grundstueck);
 	}
 
 	@Override
-	public int auszahlenHypthek(Spieler spieler, Grundstueck grundstueck) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int auszahlenHypothek(Spieler spieler, Grundstueck grundstueck) {
+		return changeHypothek(spieler, grundstueck);
+	}
+
+	private int changeHypothek(Spieler spieler, Grundstueck grundstueck) {
+		int hypothekswert = 0;
+		final List<Grundstueck> besitz = spieler.getBesitz();
+		if(besitz.contains(grundstueck)){
+			hypothekswert = grundstueck.getHypothekswert();
+			if(grundstueck.isHypothekisiert()){
+				grundstueck.setHypothekisiert(false);
+				spieler.changeGeld(-hypothekswert);
+			}else{
+				grundstueck.setHypothekisiert(true);
+				spieler.changeGeld(hypothekswert);
+			}
+		}
+		return hypothekswert;
 	}
 
 	@Override
 	public void bewegeSpieler(final Spieler spieler, final int wuerfelErgebnis) {
-		final int aktuelleSpielfeldPosition = spieler.getSpielfeld()
-				.getSpielfeldposition();
+		final Spielfeld spielfeld = spieler.getSpielfeld();
+		int aktuelleSpielfeldPosition = 0;
+		if(spielfeld != null){
+			aktuelleSpielfeldPosition = spielfeld.getSpielfeldposition();
+		}
 		final int neueSpielfeldPosition = aktuelleSpielfeldPosition
 				+ wuerfelErgebnis;
 		Spielfeld neuesSpielfeld = Spielfeld.alleSpielfelder[neueSpielfeldPosition];

@@ -1,5 +1,11 @@
 package logik.spielfeld;
 
+/**
+ * Darstellung eines Spielfelds, diese hält auch alle Spielfelder die erstellt werden.
+ * 
+ * @author Sven
+ *
+ */
 public abstract class Spielfeld {	
 	
 	private final String name;
